@@ -1,25 +1,24 @@
 import { MeetingProvider } from "@videosdk.live/react-sdk";
 import MediaControlsContainer from "./MediaControlsContainer";
-import ParticipantsGridContainer from "./ParticipantsGridContainer";
 
-import { authToken } from "../../api";
+import { authToken } from "../api";
 
-const SpeakerScreenContainer = ({ meetingId }) => {
+const HostScreenContainer = ({ meetingId }) => {
   return (
     <MeetingProvider
-      token={authToken}
+      token={authToken || ""}
       config={{
         meetingId,
         name: "C.V. Raman",
         micEnabled: true,
         webcamEnabled: true,
+
       }}
       joinWithoutUserInteraction
     >
       <MediaControlsContainer meetingId={meetingId} />
-      <ParticipantsGridContainer />
     </MeetingProvider>
   );
 };
 
-export default SpeakerScreenContainer;
+export default HostScreenContainer;

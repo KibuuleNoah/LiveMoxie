@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SpeakerScreenContainer from "./screens/speakerScreen/SpeakerScreenContainer";
+import HostScreenContainer from "./screens/HostScreenContainer";
 import ViewerScreenContainer from "./screens/ViewerScreenContainer";
 import WelcomeScreenContainer from "./screens/WelcomeScreenContainer";
 
@@ -8,7 +8,7 @@ const App = () => {
 
   return appData.meetingId ? (
     appData.mode === "CONFERENCE" ? (
-      <SpeakerScreenContainer meetingId={appData.meetingId} />
+      <HostScreenContainer meetingId={appData.meetingId} />
     ) : (
       <ViewerScreenContainer meetingId={appData.meetingId} />
     )
