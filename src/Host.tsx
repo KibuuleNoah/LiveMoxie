@@ -11,7 +11,7 @@ export default function Host() {
       setIsLoading(true);
       let targetRoomId = roomId.trim();
 
-      if (targetRoomId.length > 14) {
+      if (targetRoomId.length < 14) {
         targetRoomId = await createNewRoom();
       }
 
@@ -31,15 +31,18 @@ export default function Host() {
   };
 
   // The condition dynamically reacts perfectly once state resolves correctly
-  return authToken && roomId.length > 14 ? (
+  return authToken && roomId.length == 14 ? (
     <MeetingProvider
       config={{
         meetingId: roomId,
         micEnabled: true,
         webcamEnabled: true,
         name: "Twitch Host Demo",
+        debugMode: true,
+        mode: "SEND_AND_RECV"
       }}
       token={authToken}
+      joinWithoutUserInteraction
     >
       <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-4 space-y-4">
         {/* Added a clear tracking header so you can copy the Room ID for your viewer tab easily */}
